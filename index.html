@@ -1,68 +1,72 @@
 <!DOCTYPE html>
-  <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <script src="scrpt.js" defer></script>
-    <title>Calculadora de Gorjeta</title>
-  </head>
-  <body>
-     <header>
-        <img src="./calculadora-de-gorjeta_base/images/logo.svg" alt="Logo do Splitter">
-     </header>
-       <main>
-        <section class="informacaoes">
-          <form action="">
-            <div class="conta">
-              <label for="conta">Conta</label>
-              <div>
-                <img src="./calculadora-de-gorjeta_base/images/icon-dollar.svg" alt="Icone do Cifrão">
-                <input type="number" name="conta" id="conta" placeholder="0">
-              </div>
-            </div>
- 
-            <div class="gorjeta">
-              <label for="outra">Selecione a gorjeta %</label>
-            <div>
-                <input type="button" value="5%">
-                <input type="button" value="10%">
-                <input type="button" value="15%">
-                <input type="button" value="25%">
-                <input type="button" value="50%">
-                <input type="number" name="outra" id="outra" placeholder="Outra">
-            </div>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <script src="scrpt.js" defer></script>
+  <title>Calculadora de Gorjeta</title>
+</head>
+<body>
+  <header>
+    <img src="./calculadora-de-gorjeta_base/images/logo.svg" alt="Logo">
+  </header>
+  <main>
+    <section class="informacaoes">
+      <form action="">
+        <div class="conta">
+          <label for="conta">Conta</label>
+          <div>
+            <img src="./calculadora-de-gorjeta_base/images/icon-dollar.svg" alt="Icone do dolar">
+            <input type="number" name="conta" id="conta" placeholder="0">
           </div>
-
-          <div class="pessoas">
-             <div class="textos">
-             <label for="pessoas">Quantidade de pessoas</label>
-             <p id="erro">Não pode ser zero</p>
-         </div>
-           <div class="input-box">
-              <img src="./calculadora-de-gorjeta_base/images/icon-person.svg" alt="da pessoas">
-              <input type="number" name="pessoas" id="pessoas" placeholder="0">
-           </div>
+        </div>
+        <div class="gorjeta">
+          <label for="outra">Selecione a gorjeta %</label>
+          <div>
+            <input type="button" value="5%">
+            <input type="button" value="10%">
+            <input type="button" value="15%">
+            <input type="button" value="25%">
+            <input type="button" value="50%">
+            <input type="number" name="outra" id="outra" placeholder="Outra">
+          </div>
+        </div>
+        <div class="pessoas">
+          <div class="textos">
+            <label for="pessoas">Quantidade de pessoas</label>
+            <p id="erro">Não pode ser zero</p>
+          </div>
+          <div class="input-box">
+            <img src="./calculadora-de-gorjeta_base/images/icon-person.svg" alt="da pessoas">
+            <input type="number" name="pessoas" id="pessoas" placeholder="0">
+          </div>
+        </div>
+      </form>
+    </section>
+    <section class="resultados">
+        <div>
+            <div class="gorjeta-total">
+                    <p>
+                    <strong>Gorjeta</strong> <br>
+                    /pessoas
+                    </p>
+                <strong>R$ 0.00</strong>
+              </div>
+                <div class="total">
+                    <p>
+                   <strong>Total</strong> <br>
+                      /pessoas
+                  </p>
+                <strong>R$ 0.00</strong>
             </div>
-            </form>
-            </section>
-             <section class="resultados">
-                <div class="gorjeta-total">
-                  <p>
-                   <div>
-                     <p>
-                      <strong>Gorjeta</strong> <br>
-                              /pessoas
-                            </p>
-                            <strong>R$ 0.00</strong>
-                          </div>
-                </div>
-            </section>
-            <button>Limpar</button>
-         </main>
-  </body>
-  </html>
+        </div> 
+      <button>Limpar</button>
+    </section>
+  </main>
+</body>
+</html>
