@@ -79,7 +79,7 @@ main{
 .conta:has(input:hover) div,
 .pessoas:has(input:focus) .input-box,
 .pessoas:has(input:hover) .input-box,
-.gorjeta #outros:focus,
+.gorjeta #outra:focus,
 .gorjeta #outra:hover
 {
     outline: 2px solid var(--light-green);
@@ -105,7 +105,10 @@ main{
     background-color: var(--green-800);
     color: var(--white);
 }
-
+.gorjeta .botao-ativo{
+    background-color: var(--light-green);
+    color: var(--green-800);
+}
 .gorjeta input [type="button"] :hover,
 .resultados button:hover{
     background-color: var(--green-houver);
@@ -119,7 +122,7 @@ main{
 }
 
 
-.gorjeta #outra::placeholder{
+.gorjeta#outra::placeholder{
     color: var(--green-300);
 }
 .pessoas .textos {
@@ -186,9 +189,9 @@ main{
     padding-block: 0.5rem;
 }
 
-.conta input ::-webkit-inner-spin-button,
-  .pessoas input ::-webkit-inner-spin-button,
-  .gorjeta #outra ::-webkit-inner-spin-button{
+.conta input::-webkit-inner-spin-button,
+  .pessoas input::-webkit-inner-spin-button,
+  .gorjeta #outra::-webkit-inner-spin-button{
       display: none;
       cursor: pointer;
   }
