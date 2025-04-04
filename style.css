@@ -79,8 +79,8 @@ main{
 .conta:has(input:hover) div,
 .pessoas:has(input:focus) .input-box,
 .pessoas:has(input:hover) .input-box,
-.gorjeta #outra:focus,
-.gorjeta #outra:hover
+.gorjeta#outra:focus,
+  .gorjeta#outra:hover
 {
     outline: 2px solid var(--light-green);
 }
@@ -114,8 +114,7 @@ main{
     background-color: var(--green-houver);
     cursor: pointer;
 }
-
-.gorjeta #outra{
+.gorjeta#outra{
     width: 100%;
     background-color: var(--green-100);
     color: var(--green-800);
