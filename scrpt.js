@@ -1,61 +1,79 @@
-let valorConta = 0;
-let numPessoas = 0;
-let taxaGorjeta = 0;
+let bill = 0;
+let tipPercentage = 0;
+let numberOfPeople = 0;
+let buttonSelected = null;
 
-const inputConta = document.querySelector("#conta");
-inputConta.addEventListener("input", atualizarConta);
+let billInput = document.querySelector("#bill");
+billInput.addEventListener("input", recieveBillValue);
 
-function atualizarConta(e) {
-  valorConta = Number(e.target.value);
-  atualizarCalculo();
+function recieveBillValue() {
+    bill = billInput.valueAsNumber || 0;
+    calculate();
 }
 
-const inputPessoas = document.querySelector("#pessoas");
-inputPessoas.addEventListener("input", atualizarPessoas);
+let numberOfPeopleInput = document.querySelector("#people");
+numberOfPeopleInput.addEventListener("input", recieveNumberOfPeople);
 
-function atualizarPessoas(e) {
-  const erroTexto = document.querySelector(".pessoas #erro");
-  const caixaInput = document.querySelector(".pessoas .input-box");
-
-  if (e.target.value === "0") {
-    erroTexto.style.display = "block";
-    caixaInput.setAttribute("id", "erro-div");
-  } else {
-    erroTexto.style.display = "none";
-    caixaInput.removeAttribute("id");
-    numPessoas = Number(e.target.value);
-  }
-
-  atualizarCalculo();
+function recieveNumberOfPeople() {
+    numberOfPeople = numberOfPeopleInput.valueAsNumber || 0;
+    calculate();
 }
 
-const botoes = document.querySelectorAll(".gorjeta input[type='button']");
-
-botoes.forEach(btn => {
-  btn.addEventListener("click", definirGorjeta);
-});
-
-function definirGorjeta(e) {
-  botoes.forEach(btn => {
-    btn.classList.remove("botao-ativo");
-    if (btn.value === e.target.value) {
-      btn.classList.add("botao-ativo");
+function recieveTipPercentage(value) {
+    if (buttonSelected !== null) {
+        buttonSelected.classList.remove("button-selected");
     }
-  });
 
-  taxaGorjeta = e.target.value !== "" ? parseFloat(e.target.value) / 100 : 0;
-  atualizarCalculo();
+    buttonSelected = document.querySelector(`#button-${value}`);
+    if (buttonSelected) {
+        buttonSelected.classList.add("button-selected");
+    }
+
+    tipPercentage = value / 100;
+
+    let customTipInput = document.querySelector("#custom-tip");
+    customTipInput.value = "";
+
+    calculate();
 }
 
-const inputCustom = document.querySelector("#outra");
-inputCustom.addEventListener("input", definirGorjeta);
+function recieveCustomTipPercentage() {
+    let customTipInput = document.querySelector("#custom-tip");
+    tipPercentage = (customTipInput.valueAsNumber || 0) / 100;
 
-function atualizarCalculo() {
-  if (valorConta > 0 && taxaGorjeta > 0 && numPessoas > 0) {
-    const campoGorjeta = document.querySelector(".gorjeta-total > strong");
-    campoGorjeta.innerHTML = `R$ ${(valorConta * taxaGorjeta / numPessoas).toFixed(2)}`;
+    if (buttonSelected !== null) {
+        buttonSelected.classList.remove("button-selected");
+        buttonSelected = null;
+    }
 
-    const campoTotal = document.querySelector(".total > strong");
-    campoTotal.innerHTML = `R$ ${((valorConta + valorConta * taxaGorjeta) / numPessoas).toFixed(2)}`;
-  }
+    calculate();
+}
+
+function calculate() {
+    if (bill > 0 && tipPercentage > 0 && numberOfPeople > 0) {
+        let tipAmount = (bill * tipPercentage) / numberOfPeople;
+        let totalAmount = (bill / numberOfPeople) + tipAmount;
+
+        document.querySelector("#tip-amount").textContent = `$${tipAmount.toFixed(2)}`;
+        document.querySelector("#total-amount").textContent = `$${totalAmount.toFixed(2)}`;
+    } else {
+        document.querySelector("#tip-amount").textContent = "$0.00";
+        document.querySelector("#total-amount").textContent = "$0.00";
+    }
+}
+
+function reset() {
+    bill = 0;
+    tipPercentage = 0;
+    numberOfPeople = 0;
+    buttonSelected = null;
+
+    document.querySelector("#bill").value = "";
+    document.querySelector("#people").value = "";
+    document.querySelector("#custom-tip").value = "";
+
+    let buttons = document.querySelectorAll("button");
+    buttons.forEach(button => button.classList.remove("button-selected"));
+
+    calculate();
 }
